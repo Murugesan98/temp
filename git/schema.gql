@@ -1,0 +1,132 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type EvUserType {
+  userName: String!
+  mobileNumber: String!
+  mail: String!
+  newPassword: String!
+  confirmPassword: String!
+  nameOnCard: String!
+  cardNo: String!
+  expiryDate: String!
+  location: String!
+}
+
+type CpUserType {
+  userName: String!
+  mobile: String!
+  mail: String!
+  newpassword: String!
+  confirmPassword: String!
+  connector_type: [String!]!
+  current_type: String!
+  availability: String!
+  price: String!
+  amentities: [String!]!
+  Location: String!
+}
+
+type CpUserLocation {
+  current_type: String!
+  availability: String!
+  price: String!
+  amentities: [String!]!
+  Location: String!
+}
+
+type CpSearchResult {
+  Price: String!
+  Owner_name: String!
+  Connector_type: [String!]!
+  Current_type: String!
+  Amentities: [String!]!
+  Location: String!
+  CpId: String!
+}
+
+type Bill {
+  Consumption: Float!
+  Duration: Int!
+  UnitPrice: Int!
+  ConsumptionCost: Float!
+  Tax: Float!
+  Discount: Int!
+  TotalBill: Float!
+}
+
+type Requests {
+  Requests: String!
+}
+
+type Query {
+  checkUser(email: String!): String!
+  locationSearch(location: String!): [CpUserLocation!]!
+  Search(input: CpSearch!): CpSearchResult!
+  generateBill(input: BillInputs!): Bill!
+  request(ID: String!): Requests!
+}
+
+input CpSearch {
+  Start_date: String!
+  End_date: String!
+  From: String!
+  To: String!
+  Type: [String!]!
+  Location: String!
+}
+
+input BillInputs {
+  ID: String!
+  StartDate: String!
+  EndDate: String!
+  From: String!
+  To: String!
+  Ratedpower: Int!
+  Price: Int!
+}
+
+type Mutation {
+  addEvOwnerRegistration(input: AddEvUserType!): EvUserType!
+  addCpOwnerRegistration(input: AddCpUserType!): CpUserType!
+  request(input: CpRequest!): String!
+  requestStatus(input: StatusUpdate!): String!
+}
+
+input AddEvUserType {
+  userName: String!
+  mobileNumber: String!
+  mail: String!
+  newPassword: String!
+  confirmPassword: String!
+  nameOnCard: String!
+  cardNo: String!
+  expiryDate: String!
+  location: String!
+}
+
+input AddCpUserType {
+  userName: String!
+  mobile: String!
+  mail: String!
+  newPassword: String!
+  confirmPassword: String!
+  connectorType: [String!]!
+  currentType: String!
+  availability: String!
+  price: Float!
+  amentities: [String!]!
+  Location: String!
+}
+
+input CpRequest {
+  ID: String!
+  date: String!
+  name: String!
+}
+
+input StatusUpdate {
+  ID: String!
+  status: String!
+}
